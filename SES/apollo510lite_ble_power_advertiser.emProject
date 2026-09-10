@@ -1,0 +1,339 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="apollo510lite_ble_power_advertiser" target="8" version="2">
+  <configuration Name="apollo510lite_ble_power_advertiser" hidden="Yes" />
+  <configuration
+    Name="apollo510lite_ble_power_advertiser Internal"
+    inherited_configurations="Internal;apollo510lite_ble_power_advertiser" />
+  <configuration Name="Internal" hidden="Yes" />
+  <project Name="apollo510lite_ble_power_advertiser">
+    <configuration
+      Name="apollo510lite_ble_power_advertiser"
+      Target="Cortex-M55"
+      arm_architecture="v8.1M_Mainline"
+      arm_core_type="Cortex-M55"
+      arm_endian="Little"
+      arm_fpu_type="FPv5-D16"
+      arm_target_device_name="Cortex-M55" />
+    <configuration
+      BUILD_OPTIONS="None"
+      JLinkExecuteCommand=""
+      JLinkLogFileName=""
+      JLinkScriptFileName=""
+      JLinkShowLog="No"
+      Name="apollo510lite_ble_power_advertiser Internal"
+      arm_fp_abi="Hard"
+      arm_linker_variant="GNU"
+      arm_target_device_name="AP510DLA-CBR"
+      build_generic_options_file_name=""
+      build_toolchain_directory="$(ARM_GCC_ROOT)/bin"
+      c_additional_options=""
+      c_include_files=""
+      c_only_additional_options="-ffunction-sections;-fdata-sections;-fomit-frame-pointer;-std=c99;-Wall;-pedantic-errors"
+      c_preprocessor_definitions="PART_apollo510L;AM_FREERTOS;AM_PACKAGE_BGA;AM_PART_APOLLO510L;AM_PRINTF_BUFSIZE=256;AM_RSS_LP_ENABLED;CORDIO_ENABLED=1;POWER_CONSUMPTION_TEST=1;SEC_ECC_CFG=SEC_ECC_CFG_HCI;apollo510dL_evb;gcc;CFG_BT_54"
+      c_user_include_directories="$(ProjectDir)/../src;$(AMBIQSUITE_ROOT)/mcu/apollo510L;$(AMBIQSUITE_ROOT)/mcu/apollo510L/regs;$(AMBIQSUITE_ROOT)/mcu/apollo510L/hal;$(AMBIQSUITE_ROOT)/mcu/apollo510L/hal/mcu;$(AMBIQSUITE_ROOT)/mcu/apollo510L/hal/mcu/gcc/bin;$(AMBIQSUITE_ROOT)/CMSIS/AmbiqMicro/Include;$(AMBIQSUITE_ROOT)/CMSIS/AmbiqMicro/Source;$(AMBIQSUITE_ROOT)/CMSIS/ARM/Include;$(AMBIQSUITE_ROOT)/devices;$(AMBIQSUITE_ROOT)/utils;$(AMBIQSUITE_ROOT)/boards/apollo510dL_evb/bsp;$(AMBIQSUITE_ROOT)/third_party/ThinkSi/NemaGFX_SDK/include/tsi/NemaGFX;$(AMBIQSUITE_ROOT)/third_party/ThinkSi/NemaGFX_SDK/NemaGFX;$(AMBIQSUITE_ROOT)/third_party/ThinkSi/NemaGFX_SDK/include/tsi/common;$(AMBIQSUITE_ROOT)/third_party/ThinkSi/NemaGFX_SDK/include/tsi/NemaDC;$(AMBIQSUITE_ROOT)/third_party/ThinkSi/NemaGFX_SDK/common/mem;$(AMBIQSUITE_ROOT)/third_party/ThinkSi/config/apollo510L_nemagfx;$(AMBIQSUITE_ROOT)/third_party/ThinkSi/NemaGFX_SDK/NemaDC;$(AMBIQSUITE_ROOT)/third_party/open-amp/apps/ipc_service/backends;$(AMBIQSUITE_ROOT)/third_party/open-amp/lib/include/openamp;$(AMBIQSUITE_ROOT)/third_party/open-amp/lib/include/internal;$(AMBIQSUITE_ROOT)/third_party/open-amp/lib/include;$(AMBIQSUITE_ROOT)/third_party/open-amp;$(AMBIQSUITE_ROOT)/third_party/open-amp/apps/ipc_service/include/ipc;$(AMBIQSUITE_ROOT)/third_party/open-amp/libmetal/lib;$(AMBIQSUITE_ROOT)/third_party/open-amp/lib/rpmsg;$(AMBIQSUITE_ROOT)/ambiq_ble/apps/amota;$(AMBIQSUITE_ROOT)/ambiq_ble/profiles/amota;$(AMBIQSUITE_ROOT)/ambiq_ble/services;$(AMBIQSUITE_ROOT)/third_party/FreeRTOSv10.5.1/Source/include;$(AMBIQSUITE_ROOT)/third_party/FreeRTOSv10.5.1/Source/portable/GCC/AMapollo5;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-host/include;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-host/sources/hci/ambiq;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-host/sources/hci/ambiq/510L_radio;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-host/sources/sec/common;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-host/sources/stack/att;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-host/sources/stack/cfg;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-host/sources/stack/dm;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-host/sources/stack/hci;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-host/sources/stack/l2c;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-host/sources/stack/smp;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/include/app;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/apps;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/apps/app;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/apps/fit;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/profiles;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/profiles/bas;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/profiles/gap;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/profiles/gatt;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/profiles/hid;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/profiles/hrps;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/profiles/include;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/profiles/rscp;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/profiles/uribeacon;$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/services;$(AMBIQSUITE_ROOT)/ambiq_ble/apps/adv_ext;$(AMBIQSUITE_ROOT)/third_party/cordio/wsf/include;$(AMBIQSUITE_ROOT)/third_party/cordio/wsf/sources;$(AMBIQSUITE_ROOT)/third_party/cordio/wsf/sources/port/freertos;$(AMBIQSUITE_ROOT)/third_party/cordio/wsf/sources/util;$(AMBIQSUITE_ROOT)/third_party/uecc"
+      debug_initial_breakpoint_set_option="Always"
+      debug_stack_pointer_start="__StackTop"
+      debug_start_from_entry_point_symbol="Yes"
+      debug_startup_completion_point="main"
+      gcc_c_language_standard="c99"
+      gcc_debugging_level="Level 3"
+      gcc_entry_point="Reset_Handler"
+      gcc_optimization_level="Level 0"
+      gcc_prefix="arm-none-eabi-"
+      gcc_short_enum="Minimal Container Size"
+      link_linker_script_file="$(ProjectDir)/apollo510l_ses.ld"
+      link_use_linker_script_file="Yes"
+      linker_additional_files=""
+      linker_additional_options="-nostartfiles;-static"
+      linker_additional_system_libraries="m;c;gcc;stdc++"
+      macros=""
+      use_external_gcc="Yes" />
+    <configuration
+      Name="Common"
+      Target="Cortex-M55"
+      arm_architecture="v8.1M_Mainline"
+      arm_compiler_variant="SEGGER"
+      arm_core_type="Cortex-M55"
+      arm_endian="Little"
+      arm_fpu_type="FPv5-D16"
+      arm_linker_variant="SEGGER"
+      arm_target_device_name="Cortex-M55"
+      arm_target_interface_type="SWD"
+      debug_start_from_entry_point_symbol="No"
+      debug_target_connection="J-Link"
+      project_directory=""
+      project_type="Executable"
+      property_groups_file_path="$(StudioDir)/targets/propertyGroups_CM.xml" />
+    <configuration
+      LIBRARY_IO_TYPE="SEMIHOST (host-formatted)"
+      Name="Internal"
+      link_linker_script_file="$(StudioDir)/samples/SEGGER_Flash.icf" />
+    <folder Name="::Device" />
+    <folder
+      Name="am_resources"
+      exclude=""
+      filter="am_resources.c"
+      path="$(AMBIQSUITE_ROOT)/boards/apollo510dL_evb/examples/power/ble_freertos_fit_lp/src"
+      recurse="No" />
+    <folder
+      Name="bsp"
+      exclude=""
+      filter="am_bsp*.c;am_bsp*.h"
+      path="$(AMBIQSUITE_ROOT)/boards/apollo510dL_evb/bsp"
+      recurse="No" />
+    <folder
+      Name="CMSIS/AmbiqMicro"
+      exclude=""
+      filter="system_apollo510L.c"
+      path="$(AMBIQSUITE_ROOT)/CMSIS/AmbiqMicro/Source"
+      recurse="No" />
+    <folder Name="cordio">
+      <folder
+        Name="510L_radio"
+        exclude=""
+        filter="hci_drv_510L_radio.c;hci_vs_510L_radio.c"
+        path="$(AMBIQSUITE_ROOT)/third_party/cordio/ble-host/sources/hci/ambiq/510L_radio"
+        recurse="No" />
+      <folder
+        Name="ambiq_hci"
+        exclude=""
+        filter="hci_cmd.c;hci_cmd_ae.c;hci_cmd_bis.c;hci_cmd_cis.c;hci_cmd_cte.c;hci_cmd_iso.c;hci_cmd_past.c;hci_cmd_phy.c;hci_core.c;hci_core_ps.c;hci_evt.c;hci_tr.c;hci_vs_ae.c"
+        path="$(AMBIQSUITE_ROOT)/third_party/cordio/ble-host/sources/hci/ambiq"
+        recurse="No" />
+      <folder
+        Name="app"
+        exclude=""
+        filter="app*.c"
+        path="$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/apps/app"
+        recurse="No" />
+      <folder
+        Name="att"
+        exclude=""
+        filter="attc*.c;atts*.c;att*.c"
+        path="$(AMBIQSUITE_ROOT)/third_party/cordio/ble-host/sources/stack/att"
+        recurse="No" />
+      <folder
+        Name="bas"
+        exclude=""
+        filter="bas_main.c"
+        path="$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/profiles/bas"
+        recurse="No" />
+      <folder
+        Name="cfg"
+        exclude=""
+        filter="cfg_stack.c"
+        path="$(AMBIQSUITE_ROOT)/third_party/cordio/ble-host/sources/stack/cfg"
+        recurse="No" />
+      <folder
+        Name="common"
+        exclude=""
+        filter="app_db.c;app_hw.c;app_ui.c;ui_console.c;ui_lcd.c;ui_main.c;ui_platform.c;ui_timer.c"
+        path="$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/apps/app/common"
+        recurse="No" />
+      <folder
+        Name="dm"
+        exclude=""
+        filter="dm*.c"
+        path="$(AMBIQSUITE_ROOT)/third_party/cordio/ble-host/sources/stack/dm"
+        recurse="No" />
+      <folder
+        Name="freertos"
+        exclude=""
+        filter="wsf*.c"
+        path="$(AMBIQSUITE_ROOT)/third_party/cordio/wsf/sources/port/freertos"
+        recurse="No" />
+      <folder
+        Name="gap"
+        exclude=""
+        filter="gap_main.c"
+        path="$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/profiles/gap"
+        recurse="No" />
+      <folder
+        Name="gatt"
+        exclude=""
+        filter="gatt_main.c"
+        path="$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/profiles/gatt"
+        recurse="No" />
+      <folder
+        Name="hci"
+        exclude=""
+        filter="hci_main.c"
+        path="$(AMBIQSUITE_ROOT)/third_party/cordio/ble-host/sources/stack/hci"
+        recurse="No" />
+      <folder
+        Name="hid"
+        exclude=""
+        filter="hid_main.c"
+        path="$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/profiles/hid"
+        recurse="No" />
+      <folder
+        Name="hidapp"
+        exclude=""
+        filter="hidapp_main.c"
+        path="$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/apps/hidapp"
+        recurse="No" />
+      <folder
+        Name="hrps"
+        exclude=""
+        filter="hrps_main.c"
+        path="$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/profiles/hrps"
+        recurse="No" />
+      <folder
+        Name="l2c"
+        exclude=""
+        filter="l2c_coc.c;l2c_main.c;l2c_master.c;l2c_slave.c"
+        path="$(AMBIQSUITE_ROOT)/third_party/cordio/ble-host/sources/stack/l2c"
+        recurse="No" />
+      <folder
+        Name="rscp"
+        exclude=""
+        filter="rscps_main.c"
+        path="$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/profiles/rscp"
+        recurse="No" />
+      <folder
+        Name="sec-common"
+        exclude=""
+        filter="sec_aes.c;sec_aes_rev.c;sec_ccm_hci.c;sec_cmac_hci.c;sec_ecc_debug.c;sec_ecc_hci.c;sec_main.c"
+        path="$(AMBIQSUITE_ROOT)/third_party/cordio/ble-host/sources/sec/common"
+        recurse="No" />
+      <folder
+        Name="services"
+        exclude=""
+        filter="svc*.c"
+        path="$(AMBIQSUITE_ROOT)/third_party/cordio/ble-profiles/sources/services"
+        recurse="No" />
+      <folder
+        Name="smp"
+        exclude=""
+        filter="smpi*.c;smpr*.c;smp*.c"
+        path="$(AMBIQSUITE_ROOT)/third_party/cordio/ble-host/sources/stack/smp"
+        recurse="No" />
+      <folder
+        Name="uecc"
+        exclude=""
+        filter="sec_ecc.c"
+        path="$(AMBIQSUITE_ROOT)/third_party/cordio/ble-host/sources/sec/uecc"
+        recurse="No" />
+      <folder
+        Name="util"
+        exclude=""
+        filter="bda.c;bstream.c;calc128.c;crc32.c;print.c;terminal.c;wstr.c"
+        path="$(AMBIQSUITE_ROOT)/third_party/cordio/wsf/sources/util"
+        recurse="No" />
+    </folder>
+    <folder
+      Name="devices"
+      exclude=""
+      filter="am_devices_510L_radio.c"
+      path="$(AMBIQSUITE_ROOT)/devices"
+      recurse="No" />
+    <folder
+      Name="FreeRTOSv10.5.1_AMapollo5"
+      exclude=""
+      filter="port*.c"
+      path="$(AMBIQSUITE_ROOT)/third_party/FreeRTOSv10.5.1/Source/portable/gcc/AMapollo5"
+      recurse="No" />
+    <folder
+      Name="FreeRTOSv10.5.1_MemMang"
+      exclude=""
+      filter="heap_4.c"
+      path="$(AMBIQSUITE_ROOT)/third_party/FreeRTOSv10.5.1/Source/portable/MemMang"
+      recurse="No" />
+    <folder
+      Name="FreeRTOSv10.5.1_Source"
+      exclude=""
+      filter="event_groups.c;list.c;queue.c;tasks.c;timers.c"
+      path="$(AMBIQSUITE_ROOT)/third_party/FreeRTOSv10.5.1/Source"
+      recurse="No" />
+    <folder
+      Name="gcc"
+      exclude=""
+      filter="startup_gcc.c"
+      path="$(AMBIQSUITE_ROOT)/boards/apollo510dL_evb/examples/power/ble_freertos_fit_lp/gcc"
+      recurse="No">
+      <configuration
+        Name="apollo510lite_ble_power_advertiser Internal"
+        build_exclude_from_build="No" />
+    </folder>
+    <folder
+      Name="hal"
+      exclude=""
+      filter="libam_hal.a"
+      path="$(AMBIQSUITE_ROOT)/mcu/apollo510L/hal/mcu/gcc/bin"
+      recurse="No" />
+    <folder
+      Name="open-amp_apollo510L"
+      exclude=""
+      filter="sys.c"
+      path="$(AMBIQSUITE_ROOT)/third_party/open-amp/libmetal/lib/system/freertos/apollo510L"
+      recurse="No" />
+    <folder
+      Name="open-amp_backends"
+      exclude=""
+      filter="ipc_rpmsg_static_vrings.c"
+      path="$(AMBIQSUITE_ROOT)/third_party/open-amp/apps/ipc_service/backends"
+      recurse="No" />
+    <folder
+      Name="open-amp_freertos"
+      exclude=""
+      filter="freertos*.c"
+      path="$(AMBIQSUITE_ROOT)/third_party/open-amp/libmetal/lib/system/freertos"
+      recurse="No" />
+    <folder
+      Name="open-amp_ipc_lib"
+      exclude=""
+      filter="ipc_rpmsg.c;ipc_static_vrings.c"
+      path="$(AMBIQSUITE_ROOT)/third_party/open-amp/apps/ipc_service/lib"
+      recurse="No" />
+    <folder
+      Name="open-amp_ipc_service"
+      exclude=""
+      filter="ipc_service.c"
+      path="$(AMBIQSUITE_ROOT)/third_party/open-amp/apps/ipc_service"
+      recurse="No" />
+    <folder
+      Name="open-amp_lib"
+      exclude=""
+      filter="device.c;dma.c;init.c;io.c;irq.c;log.c;shmem.c;softirq.c;version.c"
+      path="$(AMBIQSUITE_ROOT)/third_party/open-amp/libmetal/lib"
+      recurse="No" />
+    <folder
+      Name="open-amp_rpmsg"
+      exclude=""
+      filter="rpmsg.c;rpmsg_virtio.c"
+      path="$(AMBIQSUITE_ROOT)/third_party/open-amp/lib/rpmsg"
+      recurse="No" />
+    <folder
+      Name="open-amp_utils"
+      exclude=""
+      filter="utilities.c"
+      path="$(AMBIQSUITE_ROOT)/third_party/open-amp/lib/utils"
+      recurse="No" />
+    <folder
+      Name="open-amp_virtio"
+      exclude=""
+      filter="virtio.c;virtqueue.c"
+      path="$(AMBIQSUITE_ROOT)/third_party/open-amp/lib/virtio"
+      recurse="No" />
+    <folder Name="src">
+      <file file_name="../src/advertiser.c" />
+      <file file_name="../src/advertiser.h" />
+      <file file_name="../src/ble_task.c" />
+      <file file_name="../src/ble_task.h" />
+      <file file_name="../src/FreeRTOSConfig.h" />
+      <file file_name="../src/main.c" />
+    </folder>
+    <folder
+      Name="uecc"
+      exclude=""
+      filter="uECC.c;uECC_ll.c"
+      path="$(AMBIQSUITE_ROOT)/third_party/uecc"
+      recurse="No" />
+    <folder
+      Name="utils"
+      exclude=""
+      filter="am_util_delay.c;am_util_debug.c;am_util_stdio.c;am_util_string.c;am_util_faultisr.c;am_util_id.c"
+      path="$(AMBIQSUITE_ROOT)/utils"
+      recurse="No" />
+  </project>
+</solution>
