@@ -198,7 +198,27 @@ int main(void)
 #endif // ALL_RETAIN     
     };
 
-
+/*
+ * Apollo510L SRAM configuration note:
+ *
+ * The BLE radio IPC buffer g_pui32IpcShm is placed in shared SRAM by
+ * AM_SHARED_RW.
+ *
+ * The Shared SRAM bank containing this buffer must remain powered and,
+ * when required by the selected low-power mode, retained. If the SRAM
+ * configuration disables the bank that holds g_pui32IpcShm, access to
+ * the IPC buffer may cause a HardFault and BLE radio communication will fail.
+ *
+ * Verified configurations:
+ *   AM_HAL_PWRCTRL_SRAM_0P75M  - works
+ *   AM_HAL_PWRCTRL_SRAM_1P75M  - works
+ *   AM_HAL_PWRCTRL_SRAM_1M     - causes a HardFault with the current
+ *                                shared-memory layout
+ *
+ * Do not remove AM_SHARED_RW from g_pui32IpcShm as a workaround.
+ * Instead, select an SRAM configuration that keeps the Shared SRAM bank
+ * used by the IPC buffer enabled.
+ */
 
     am_hal_pwrctrl_sram_memcfg_t SRAMMemCfg =
     {
