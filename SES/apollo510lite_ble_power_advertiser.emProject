@@ -41,7 +41,7 @@
       gcc_optimization_level="Level 0"
       gcc_prefix="arm-none-eabi-"
       gcc_short_enum="Minimal Container Size"
-      link_linker_script_file="$(ProjectDir)/apollo510l_ses.ld"
+      link_linker_script_file="apollo510l_ses.ld"
       link_use_linker_script_file="Yes"
       linker_additional_files=""
       linker_additional_options="-nostartfiles;-static"
@@ -318,6 +318,7 @@
     <folder Name="src">
       <file file_name="../src/advertiser.c" />
       <file file_name="../src/advertiser.h" />
+      <file file_name="apollo510l_ses.ld" />
       <file file_name="../src/ble_task.c" />
       <file file_name="../src/ble_task.h" />
       <file file_name="../src/FreeRTOSConfig.h" />

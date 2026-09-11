@@ -172,6 +172,55 @@ am_devices_510L_radio_ipc_shm_t sIpcShm =
     .ui32IpcShmSize = sizeof(g_pui32IpcShm)
 };
 
+/*
+ * Apollo510L memory configuration note:
+ *
+ * DTCM:
+ *
+ * The linker allows the application DTCM layout to be selected using
+ * DTCM_SELECT:
+ *
+ *   0 = 128 KiB DTCM
+ *   1 = 256 KiB DTCM (default)
+ *
+ * The MCU DTCM power configuration must match the linker selection:
+ *
+ *   DTCM_SELECT = 0 -> AM_HAL_PWRCTRL_DTCM128K
+ *   DTCM_SELECT = 1 -> AM_HAL_PWRCTRL_DTCM256K
+ *
+ * The linker places .dtcm_text, .data, .bss, heap, and stack within the
+ * selected DTCM range. Powering less DTCM than required by the linker
+ * layout may make part of the application memory inaccessible and can
+ * cause a HardFault.
+ *
+ * eRetainDTCM controls whether the enabled DTCM remains retained during
+ * deep sleep. It does not select the DTCM size.
+ *
+ * Shared SRAM:
+ *
+ * The BLE radio IPC buffer g_pui32IpcShm is placed in the .shared section
+ * by AM_SHARED_RW and must remain accessible for radio-core IPC.
+ *
+ * The linker allows the .shared section to be placed in one of three
+ * Shared SRAM regions using SHARED_SRAM_SELECT:
+ *
+ *   0 = GROUP0, lower 1 MiB
+ *   1 = GROUP1, upper 0.75 MiB (default)
+ *   2 = ALL,    full 1.75 MiB
+ *
+ * The Shared SRAM power and retention configuration must match the region
+ * selected by the linker:
+ *
+ *   GROUP0 -> AM_HAL_PWRCTRL_SRAM_1M
+ *   GROUP1 -> AM_HAL_PWRCTRL_SRAM_0P75M
+ *   ALL    -> AM_HAL_PWRCTRL_SRAM_1P75M
+ *
+ * Powering down the Shared SRAM group containing the IPC buffer may cause
+ * a HardFault when the radio IPC memory is accessed.
+ *
+ * Do not remove AM_SHARED_RW from g_pui32IpcShm as a workaround.
+ */
+
 int main(void)
 {
     am_util_delay_ms(3000);
@@ -193,32 +242,11 @@ int main(void)
 
 #else 
 
-        .eDTCMCfg       = AM_HAL_PWRCTRL_DTCM128K,
+        .eDTCMCfg       = AM_HAL_PWRCTRL_DTCM128K
 
 #endif // ALL_RETAIN     
     };
 
-/*
- * Apollo510L SRAM configuration note:
- *
- * The BLE radio IPC buffer g_pui32IpcShm is placed in shared SRAM by
- * AM_SHARED_RW.
- *
- * The Shared SRAM bank containing this buffer must remain powered and,
- * when required by the selected low-power mode, retained. If the SRAM
- * configuration disables the bank that holds g_pui32IpcShm, access to
- * the IPC buffer may cause a HardFault and BLE radio communication will fail.
- *
- * Verified configurations:
- *   AM_HAL_PWRCTRL_SRAM_0P75M  - works
- *   AM_HAL_PWRCTRL_SRAM_1P75M  - works
- *   AM_HAL_PWRCTRL_SRAM_1M     - causes a HardFault with the current
- *                                shared-memory layout
- *
- * Do not remove AM_SHARED_RW from g_pui32IpcShm as a workaround.
- * Instead, select an SRAM configuration that keeps the Shared SRAM bank
- * used by the IPC buffer enabled.
- */
 
     am_hal_pwrctrl_sram_memcfg_t SRAMMemCfg =
     {
