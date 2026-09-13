@@ -35,6 +35,23 @@
  * Project-authored GNU ld script for SEGGER Embedded Studio.
  * The memory layout matches the Apollo510L configuration used by this project.
  */
+
+/*
+ * Apollo510 Lite derivative selection:
+ *   0 = Apollo510 Lite  (APPL NVM ends at 0x005FBFFF)
+ *   1 = Apollo510B Lite (APPL NVM ends at 0x005B7FFF)
+ *   2 = Apollo510D Lite (APPL NVM ends at 0x00593FFF)
+ *
+ * The application start remains fixed at 0x00410000 for compatibility with
+ * the current boot flow. FLASH length is calculated through the inclusive
+ * APPL NVM end address of the selected derivative.
+ *
+ * Default: Apollo510B Lite, the target used by the current BLE example.
+ * Override with:
+ *   --defsym=APOLLO510L_VARIANT=0
+ *   --defsym=APOLLO510L_VARIANT=1
+ *   --defsym=APOLLO510L_VARIANT=2
+ */
  
  /*
  * Shared SRAM placement:
@@ -58,12 +75,13 @@
  * followed by a 12 KiB stack. The remaining lower range is available to the
  * application DTCM sections.
  *
- * Default: 256 KiB, preserving the current DTCM, heap, and stack layout.
+ * Default: 128 KiB, preserving the current selector value and behavior.
  * Override with:
  *   --defsym=DTCM_SELECT=0
  *   --defsym=DTCM_SELECT=1
  */
  
+PROVIDE(APOLLO510L_VARIANT = 1);
 PROVIDE(SHARED_SRAM_SELECT = 1);
 PROVIDE(DTCM_SELECT = 0);
 
@@ -71,7 +89,10 @@ ENTRY(Reset_Handler)
 
 MEMORY 
 {
-    FLASH     (rx)  : ORIGIN = 0x00410000, LENGTH = 2031616
+    FLASH     (rx)  : ORIGIN = 0x00410000,
+                      LENGTH = (APOLLO510L_VARIANT == 0 ? 0x1EC000 :
+                                APOLLO510L_VARIANT == 1 ? 0x1A8000 :
+                                                         0x184000)
     DTCM      (rwx) : ORIGIN = 0x20000000,
                       LENGTH = (DTCM_SELECT == 0 ? 0x1C000 : 0x3C000)
 
@@ -105,6 +126,13 @@ ASSERT(SHARED_SRAM_SELECT >= 0 && SHARED_SRAM_SELECT <= 2,
 
 ASSERT(DTCM_SELECT == 0 || DTCM_SELECT == 1,
        "DTCM_SELECT must be 0 (128 KiB) or 1 (256 KiB)")
+
+ASSERT(APOLLO510L_VARIANT >= 0 && APOLLO510L_VARIANT <= 2,
+       "APOLLO510L_VARIANT must be 0 (510 Lite), 1 (510B Lite), or 2 (510D Lite)")
+
+__apollo510l_variant__ = APOLLO510L_VARIANT;
+__flash_start__        = ORIGIN(FLASH);
+__flash_end__          = ORIGIN(FLASH) + LENGTH(FLASH) - 1;
 
 __shared_sram_selection__ = SHARED_SRAM_SELECT;
 __shared_sram_start__     = ORIGIN(SHARED_SRAM);
