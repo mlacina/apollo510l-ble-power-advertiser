@@ -32,8 +32,16 @@
  */
 
 /*
- * Project-authored GNU ld script for SEGGER Embedded Studio.
- * The memory layout matches the Apollo510L configuration used by this project.
+ * SPDX-License-Identifier: BSD-3-Clause
+ *
+ * Copyright (c) 2026 Mariusz Łacina
+ *
+ * Project-specific GNU ld script for SEGGER Embedded Studio.
+ *
+ * The memory map and baseline section layout are based on the Apollo510L
+ * configuration used by AmbiqSuite SDK 5.2.0. The script includes substantial
+ * project-specific extensions for device-variant selection, configurable
+ * memory placement, and SEGGER Embedded Studio integration.
  */
 
 /*
